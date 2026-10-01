@@ -1,0 +1,193 @@
+/* ===== Quiz de Avaliação Inicial — CSS isolado (prefixo clinicaQuiz) ===== */
+.clinicaQuizOverlay {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  background: rgba(20, 61, 28, .55);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.clinicaQuizOverlay.clinicaQuizIsOpen { opacity: 1; visibility: visible; }
+
+.clinicaQuizModal {
+  position: relative;
+  display: flex; flex-direction: column;
+  width: min(560px, 100%);
+  max-height: 92vh; max-height: 92dvh;
+  background: var(--paper, #fdfbf6);
+  color: var(--ink, #23301f);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1rem; line-height: 1.6;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  transform: translateY(18px) scale(.97);
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+  outline: none;
+}
+.clinicaQuizOverlay.clinicaQuizIsOpen .clinicaQuizModal { transform: none; }
+.clinicaQuizModal *, .clinicaQuizModal *::before, .clinicaQuizModal *::after { box-sizing: border-box; }
+
+.clinicaQuizHeader {
+  position: relative;
+  padding: 1.4rem 3.4rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--line, #e4dfcf);
+  flex: 0 0 auto;
+}
+.clinicaQuizTitle {
+  margin: 0 0 .3rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.55rem; line-height: 1.2;
+  color: var(--green-dark, #143d1c);
+}
+.clinicaQuizSubtitle { margin: 0 0 .5rem; color: var(--muted, #55624f); font-size: .98rem; }
+.clinicaQuizDisclaimer { margin: 0; color: var(--muted, #55624f); font-size: .8rem; opacity: .9; }
+
+.clinicaQuizClose {
+  position: absolute; top: .9rem; right: .9rem;
+  width: 44px; height: 44px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 50%;
+  background: rgba(31, 90, 42, .08);
+  color: var(--green-dark, #143d1c);
+  font-size: 1.6rem; line-height: 1; cursor: pointer;
+  transition: background .2s ease;
+}
+.clinicaQuizClose:hover { background: rgba(31, 90, 42, .18); }
+
+.clinicaQuizScroll {
+  flex: 1 1 auto; min-height: 0;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 1.2rem 1.5rem 1rem;
+}
+
+.clinicaQuizProgressInfo {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: .5rem;
+  font-weight: 800; font-size: .9rem; color: var(--green, #1f5a2a);
+}
+.clinicaQuizProgress {
+  height: 8px; margin-bottom: 1.3rem;
+  background: var(--gold-soft, #fbf1d5); border-radius: 999px; overflow: hidden;
+}
+.clinicaQuizProgressBar {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--gold, #e8a91a), var(--green, #1f5a2a));
+  border-radius: inherit;
+  transition: width .4s ease;
+}
+
+.clinicaQuizStep { animation: clinicaQuizIn .35s ease both; }
+.clinicaQuizStep.clinicaQuizStepBack { animation-name: clinicaQuizInBack; }
+@keyframes clinicaQuizIn { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+@keyframes clinicaQuizInBack { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
+
+.clinicaQuizFieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.clinicaQuizQuestion {
+  margin: 0 0 1rem; padding: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.3rem; line-height: 1.3;
+  color: var(--green-dark, #143d1c);
+}
+.clinicaQuizOptions { display: grid; gap: .6rem; }
+.clinicaQuizOption { position: relative; display: block; cursor: pointer; }
+.clinicaQuizOption input {
+  position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer;
+}
+.clinicaQuizOptionLabel {
+  display: flex; align-items: center; gap: .8rem;
+  min-height: 52px; padding: .75rem 1rem;
+  background: #fff; border: 2px solid var(--line, #e4dfcf);
+  border-radius: 12px; font-weight: 700;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.clinicaQuizOptionLabel::before {
+  content: ""; flex: 0 0 20px; width: 20px; height: 20px;
+  border: 2px solid var(--muted, #55624f); border-radius: 50%;
+  background: #fff; transition: all .2s ease;
+}
+.clinicaQuizOption:hover .clinicaQuizOptionLabel { border-color: var(--gold, #e8a91a); }
+.clinicaQuizOption input:checked + .clinicaQuizOptionLabel {
+  border-color: var(--green, #1f5a2a); background: var(--gold-soft, #fbf1d5);
+}
+.clinicaQuizOption input:checked + .clinicaQuizOptionLabel::before {
+  border-color: var(--green, #1f5a2a);
+  background: radial-gradient(circle, var(--green, #1f5a2a) 0 45%, #fff 50%);
+}
+.clinicaQuizOption input:focus-visible + .clinicaQuizOptionLabel { outline: 3px solid var(--gold, #e8a91a); outline-offset: 2px; }
+
+.clinicaQuizField { display: block; margin-bottom: 1rem; }
+.clinicaQuizFieldName { display: block; margin-bottom: .35rem; font-weight: 800; font-size: .95rem; }
+.clinicaQuizFieldHint { font-weight: 500; color: var(--muted, #55624f); }
+.clinicaQuizInput {
+  display: block; width: 100%; min-height: 52px; padding: .75rem 1rem;
+  font-family: inherit; font-size: 16px; /* 16px evita zoom automático no iPhone */
+  color: var(--ink, #23301f); background: #fff;
+  border: 2px solid var(--line, #e4dfcf); border-radius: 12px;
+}
+.clinicaQuizInput:focus { outline: none; border-color: var(--green, #1f5a2a); box-shadow: 0 0 0 3px rgba(232, 169, 26, .35); }
+.clinicaQuizPrivacy { margin: 0; font-size: .85rem; color: var(--muted, #55624f); }
+
+.clinicaQuizError {
+  min-height: 1.4em; margin: .8rem 0 0;
+  font-size: .9rem; font-weight: 700; color: #a3361f;
+}
+
+.clinicaQuizFooter {
+  flex: 0 0 auto; display: flex; gap: .7rem; justify-content: space-between;
+  padding: .9rem 1.5rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--line, #e4dfcf);
+}
+.clinicaQuizBtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: .7rem 1.4rem;
+  font-family: inherit; font-size: 1rem; font-weight: 800; line-height: 1.2; text-align: center;
+  border: 2px solid var(--green, #1f5a2a); border-radius: 999px;
+  cursor: pointer; text-decoration: none;
+  transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.clinicaQuizBtn:hover { transform: translateY(-1px); }
+.clinicaQuizBtn:active { transform: scale(.98); }
+.clinicaQuizBtn:focus-visible { outline: 3px solid var(--gold, #e8a91a); outline-offset: 3px; }
+.clinicaQuizNext, .clinicaQuizFinish, .clinicaQuizWhatsapp {
+  background: var(--green, #1f5a2a); color: #fff; flex: 1 1 auto;
+  box-shadow: 0 6px 16px rgba(31, 90, 42, .28);
+}
+.clinicaQuizNext:hover, .clinicaQuizFinish:hover, .clinicaQuizWhatsapp:hover { background: var(--green-dark, #143d1c); }
+.clinicaQuizBack, .clinicaQuizEdit { background: transparent; color: var(--green, #1f5a2a); }
+.clinicaQuizBack:hover, .clinicaQuizEdit:hover { background: rgba(31, 90, 42, .08); }
+.clinicaQuizBack[hidden] { display: none; }
+
+/* Resultado */
+.clinicaQuizResultTitle {
+  margin: 0 0 .5rem;
+  font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; line-height: 1.25;
+  color: var(--green-dark, #143d1c);
+}
+.clinicaQuizResultText { margin: 0 0 1rem; color: var(--muted, #55624f); }
+.clinicaQuizPreviewLabel { margin: 0 0 .4rem; font-weight: 800; font-size: .9rem; color: var(--green, #1f5a2a); }
+.clinicaQuizPreview {
+  margin: 0 0 1rem; padding: 1rem 1.1rem;
+  background: var(--gold-soft, #fbf1d5);
+  border-left: 5px solid var(--gold, #e8a91a);
+  border-radius: 0 12px 12px 0;
+  font-size: .95rem; line-height: 1.55;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.clinicaQuizNote { margin: 0 0 1rem; font-size: .88rem; color: var(--muted, #55624f); }
+.clinicaQuizResultActions { display: grid; gap: .6rem; }
+.clinicaQuizResultActions .clinicaQuizBtn { width: 100%; }
+
+@media (max-width: 520px) {
+  .clinicaQuizOverlay { padding: 0; align-items: flex-end; }
+  .clinicaQuizModal { width: 100%; max-height: 96vh; max-height: 96dvh; border-radius: 18px 18px 0 0; }
+  .clinicaQuizHeader { padding: 1.1rem 3.4rem .9rem 1.1rem; }
+  .clinicaQuizScroll { padding: 1rem 1.1rem .8rem; }
+  .clinicaQuizFooter { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .clinicaQuizTitle { font-size: 1.35rem; }
+  .clinicaQuizQuestion { font-size: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clinicaQuizOverlay, .clinicaQuizModal, .clinicaQuizProgressBar, .clinicaQuizBtn { transition: none; }
+  .clinicaQuizStep { animation: none; }
+}

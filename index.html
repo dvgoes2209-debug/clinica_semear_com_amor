@@ -1,191 +1,503 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clínica de Reabilitação Semear com Amor | São Roque/SP</title>
-    <meta
-      name="description"
-      content="Clínica de Reabilitação Semear com Amor: tratamento humanizado para álcool e drogas, unidade masculina em São Roque/SP. Legalizada, há 10 anos no mesmo endereço."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a href="#inicio" class="brand" aria-label="Semear com Amor - início">
-          <img src="logo.jpeg" alt="Clínica de Reabilitação Semear com Amor - Tratamento para álcool e drogas" />
-        </a>
-        <nav aria-label="Principal">
-          <a href="#sobre">Sobre nós</a>
-          <a href="#tratamento">Tratamento</a>
-          <a href="#equipe">Equipe</a>
-          <a href="#estrutura">Estrutura</a>
-          <a href="#familia">Família</a>
-          <a href="#localizacao">Localização</a>
-          <a href="#contato" class="nav-cta">Fale conosco</a>
-        </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica de Reabilitação Semear com Amor | Tratamento em São Roque - SP</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       1. ESTILOS GERAIS DO SITE (styles_2.css)
+       ========================================= */
+    :root {
+      --green: #1f5a2a;
+      --green-dark: #143d1c;
+      --gold: #e8a91a;
+      --gold-soft: #fbf1d5;
+      --sky: #dbe8f5;
+      --paper: #fdfbf6;
+      --ink: #23301f;
+      --muted: #55624f;
+      --line: #e4dfcf;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    img { display: block; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .container { width: min(1120px, 92%); margin-inline: auto; }
+    main > section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; color: var(--green-dark); margin: 0 0 .6em; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+    h3 { font-size: 1.25rem; }
+    p { margin: 0 0 1em; max-width: 68ch; }
+    .section-intro { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+
+    /* Tratamento das Imagens */
+    .foto {
+      filter: contrast(1.1) brightness(1.05) saturate(1.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Cabeçalho / Navegação */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(253, 251, 246, .95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .5rem; flex-wrap: wrap; }
+    .brand img { height: 64px; width: auto; border-radius: 0; }
+    nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; font-weight: 700; font-size: .95rem; }
+    nav a { color: var(--green-dark); transition: color 0.2s; }
+    nav a:hover { color: var(--gold); }
+    .nav-cta { background: var(--green); color: #fff; padding: .5rem 1.1rem; border-radius: 999px; cursor: pointer; border: none; font-weight: 700; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+    .kicker { font-weight: 800; color: var(--green); margin-bottom: 1rem; display: block; }
+    .mission {
+      margin: 0 0 1.2rem; padding: 1rem 1.3rem;
+      border-left: 5px solid var(--gold); background: var(--gold-soft);
+      font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; line-height: 1.5; color: var(--green-dark);
+      border-radius: 0 12px 12px 0;
+    }
+    .lede { color: var(--muted); }
+    .hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .hero .foto { width: 100%; aspect-ratio: 4 / 3.4; }
+
+    /* Botões Liquid Glass */
+    .btn, .nav-cta, .quiz-float-btn {
+      position: relative; overflow: hidden; isolation: isolate;
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      backdrop-filter: blur(14px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, .45);
+      transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s ease, background .3s ease, color .3s ease;
+      display: inline-block; padding: .85rem 1.6rem; border-radius: 999px; font-weight: 800; cursor: pointer; text-align: center;
+    }
+    .btn::before, .nav-cta::before, .quiz-float-btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.08) 45%, rgba(255,255,255,0) 60%);
+    }
+    .btn::after, .nav-cta::after, .quiz-float-btn::after {
+      content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; z-index: -1; pointer-events: none;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.55), transparent);
+      transform: skewX(-20deg); transition: left .7s ease;
+    }
+    .btn:hover::after, .nav-cta:hover::after, .quiz-float-btn:hover::after { left: 130%; }
+    .btn:hover, .nav-cta:hover, .quiz-float-btn:hover { transform: translateY(-2px); }
+    .btn:active, .nav-cta:active, .quiz-float-btn:active { transform: translateY(0) scale(.98); }
+
+    .btn-primary, .nav-cta, .quiz-float-btn {
+      background: linear-gradient(135deg, rgba(31,90,42,.92), rgba(20,61,28,.82));
+      color: #fff;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.65), inset 0 -3px 8px rgba(0,0,0,.22), 0 8px 22px rgba(31,90,42,.32);
+    }
+    .btn-ghost {
+      background: linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.22));
+      color: var(--green-dark);
+      border-color: rgba(31,90,42,.3);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.9), inset 0 -2px 6px rgba(31,90,42,.08), 0 6px 18px rgba(20,61,28,.12);
+    }
+    .btn-ghost:hover { background: linear-gradient(135deg, rgba(31,90,42,.88), rgba(20,61,28,.78)); color: #fff; }
+
+    /* BOTÃO FLUTUANTE DO QUIZ */
+    .quiz-float-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 1.4rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(135deg, var(--gold), #c88c00);
+      color: #143d1c;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: pulseQuiz 2.5s infinite;
+    }
+    .quiz-float-btn svg { width: 22px; height: 22px; fill: currentColor; }
+
+    @keyframes pulseQuiz {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 169, 26, 0.7); }
+      70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(232, 169, 26, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 169, 26, 0); }
+    }
+
+    /* Sobre */
+    .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+    .split .foto { width: 100%; max-height: 620px; }
+    .note { background: var(--sky); border-radius: 12px; padding: 1.2rem 1.4rem; margin-top: 1.5rem; }
+    .note h3 { margin-bottom: .3em; }
+    .note p { margin: 0; }
+
+    /* Equipe */
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem 2rem; }
+    .member { padding-block: 1rem; border-top: 2px solid var(--gold); }
+    .member p { margin: 0; color: var(--muted); }
+
+    /* Galeria */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .gallery figure { margin: 0; }
+    .gallery .foto { width: 100%; aspect-ratio: 4 / 3; }
+    figcaption { margin-top: .6rem; font-weight: 700; color: var(--green-dark); }
+
+    /* Família */
+    .family { background: var(--gold-soft); border-radius: 12px; padding: clamp(1.2rem, 4vw, 3rem); }
+    .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .family-grid p { margin: 0; }
+
+    /* Localização */
+    .location { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    .location address { font-style: normal; font-weight: 700; color: var(--green-dark); border-left: 4px solid var(--gold); padding-left: 1rem; margin-bottom: 1.5rem; }
+    .map { width: 100%; height: 380px; border: 0; border-radius: 12px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); }
+
+    /* Contato & Rodapé */
+    .contact { text-align: center; }
+    .contact p { margin-inline: auto; }
+    .contact-actions { display: flex; justify-content: center; gap: .8rem; flex-wrap: wrap; }
+    .small { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
+    .site-footer { background: var(--green-dark); color: #dfe9dc; padding-block: 1.6rem; text-align: center; font-size: .95rem; }
+    .site-footer a { color: var(--gold); font-weight: 700; }
+
+    @media (max-width: 800px) {
+      .hero, .split, .location { grid-template-columns: 1fr; }
+      .brand img { height: 52px; }
+      nav { gap: .9rem; font-size: .88rem; }
+      .map { height: 300px; }
+      .quiz-float-btn { bottom: 16px; right: 16px; padding: .8rem 1.1rem; font-size: .9rem; }
+    }
+
+    /* =========================================
+       2. ESTILOS DO QUIZ (quiz_2.css)
+       ========================================= */
+    .clinicaQuizOverlay {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      background: rgba(20, 61, 28, .55);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    .clinicaQuizOverlay.clinicaQuizIsOpen { opacity: 1; visibility: visible; }
+
+    .clinicaQuizModal {
+      position: relative;
+      display: flex; flex-direction: column;
+      width: min(560px, 100%);
+      max-height: 92vh; max-height: 92dvh;
+      background: var(--paper, #fdfbf6);
+      color: var(--ink, #23301f);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 1rem; line-height: 1.6;
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+      transform: translateY(18px) scale(.97);
+      transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+      outline: none;
+    }
+    .clinicaQuizOverlay.clinicaQuizIsOpen .clinicaQuizModal { transform: none; }
+    .clinicaQuizModal *, .clinicaQuizModal *::before, .clinicaQuizModal *::after { box-sizing: border-box; }
+
+    .clinicaQuizHeader {
+      position: relative;
+      padding: 1.4rem 3.4rem 1rem 1.5rem;
+      border-bottom: 1px solid var(--line, #e4dfcf);
+      flex: 0 0 auto;
+    }
+    .clinicaQuizTitle {
+      margin: 0 0 .3rem;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.55rem; line-height: 1.2;
+      color: var(--green-dark, #143d1c);
+    }
+    .clinicaQuizSubtitle { margin: 0 0 .5rem; color: var(--muted, #55624f); font-size: .98rem; }
+    .clinicaQuizDisclaimer { margin: 0; color: var(--muted, #55624f); font-size: .8rem; opacity: .9; }
+
+    .clinicaQuizClose {
+      position: absolute; top: .9rem; right: .9rem;
+      width: 44px; height: 44px; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+      border: 0; border-radius: 50%;
+      background: rgba(31, 90, 42, .08);
+      color: var(--green-dark, #143d1c);
+      font-size: 1.6rem; line-height: 1; cursor: pointer;
+      transition: background .2s ease;
+    }
+    .clinicaQuizClose:hover { background: rgba(31, 90, 42, .18); }
+
+    .clinicaQuizScroll {
+      flex: 1 1 auto; min-height: 0;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 1.2rem 1.5rem 1rem;
+    }
+
+    .clinicaQuizProgressInfo {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: .5rem;
+      font-weight: 800; font-size: .9rem; color: var(--green, #1f5a2a);
+    }
+    .clinicaQuizProgress {
+      height: 8px; margin-bottom: 1.3rem;
+      background: var(--gold-soft, #fbf1d5); border-radius: 999px; overflow: hidden;
+    }
+    .clinicaQuizProgressBar {
+      height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--gold, #e8a91a), var(--green, #1f5a2a));
+      border-radius: inherit;
+      transition: width .4s ease;
+    }
+
+    .clinicaQuizStep { animation: clinicaQuizIn .35s ease both; }
+    .clinicaQuizStep.clinicaQuizStepBack { animation-name: clinicaQuizInBack; }
+    @keyframes clinicaQuizIn { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+    @keyframes clinicaQuizInBack { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
+
+    .clinicaQuizFieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+    .clinicaQuizQuestion {
+      margin: 0 0 1rem; padding: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.3rem; line-height: 1.3;
+      color: var(--green-dark, #143d1c);
+    }
+    .clinicaQuizOptions { display: grid; gap: .6rem; }
+    .clinicaQuizOption { position: relative; display: block; cursor: pointer; }
+    .clinicaQuizOption input {
+      position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer;
+    }
+    .clinicaQuizOptionLabel {
+      display: flex; align-items: center; gap: .8rem;
+      min-height: 52px; padding: .75rem 1rem;
+      background: #fff; border: 2px solid var(--line, #e4dfcf);
+      border-radius: 12px; font-weight: 700;
+      transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .clinicaQuizOptionLabel::before {
+      content: ""; flex: 0 0 20px; width: 20px; height: 20px;
+      border: 2px solid var(--muted, #55624f); border-radius: 50%;
+      background: #fff; transition: all .2s ease;
+    }
+    .clinicaQuizOption:hover .clinicaQuizOptionLabel { border-color: var(--gold, #e8a91a); }
+    .clinicaQuizOption input:checked + .clinicaQuizOptionLabel {
+      border-color: var(--green, #1f5a2a); background: var(--gold-soft, #fbf1d5);
+    }
+    .clinicaQuizOption input:checked + .clinicaQuizOptionLabel::before {
+      border-color: var(--green, #1f5a2a);
+      background: radial-gradient(circle, var(--green, #1f5a2a) 0 45%, #fff 50%);
+    }
+
+    .clinicaQuizField { display: block; margin-bottom: 1rem; }
+    .clinicaQuizFieldName { display: block; margin-bottom: .35rem; font-weight: 800; font-size: .95rem; }
+    .clinicaQuizFieldHint { font-weight: 500; color: var(--muted, #55624f); }
+    .clinicaQuizInput {
+      display: block; width: 100%; min-height: 52px; padding: .75rem 1rem;
+      font-family: inherit; font-size: 16px;
+      color: var(--ink, #23301f); background: #fff;
+      border: 2px solid var(--line, #e4dfcf); border-radius: 12px;
+    }
+    .clinicaQuizInput:focus { outline: none; border-color: var(--green, #1f5a2a); box-shadow: 0 0 0 3px rgba(232, 169, 26, .35); }
+    .clinicaQuizPrivacy { margin: 0; font-size: .85rem; color: var(--muted, #55624f); }
+
+    .clinicaQuizError {
+      min-height: 1.4em; margin: .8rem 0 0;
+      font-size: .9rem; font-weight: 700; color: #a3361f;
+    }
+
+    .clinicaQuizFooter {
+      flex: 0 0 auto; display: flex; gap: .7rem; justify-content: space-between;
+      padding: .9rem 1.5rem calc(1rem + env(safe-area-inset-bottom, 0px));
+      border-top: 1px solid var(--line, #e4dfcf);
+    }
+    .clinicaQuizBtn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 52px; padding: .7rem 1.4rem;
+      font-family: inherit; font-size: 1rem; font-weight: 800; line-height: 1.2; text-align: center;
+      border: 2px solid var(--green, #1f5a2a); border-radius: 999px;
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .clinicaQuizBtn:hover { transform: translateY(-1px); }
+    .clinicaQuizNext, .clinicaQuizFinish, .clinicaQuizWhatsapp {
+      background: var(--green, #1f5a2a); color: #fff; flex: 1 1 auto;
+      box-shadow: 0 6px 16px rgba(31, 90, 42, .28);
+    }
+    .clinicaQuizNext:hover, .clinicaQuizFinish:hover, .clinicaQuizWhatsapp:hover { background: var(--green-dark, #143d1c); }
+    .clinicaQuizBack, .clinicaQuizEdit { background: transparent; color: var(--green, #1f5a2a); }
+    .clinicaQuizBack[hidden] { display: none; }
+
+    .clinicaQuizResultTitle {
+      margin: 0 0 .5rem; font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; line-height: 1.25; color: var(--green-dark, #143d1c);
+    }
+    .clinicaQuizResultText { margin: 0 0 1rem; color: var(--muted, #55624f); }
+    .clinicaQuizPreviewLabel { margin: 0 0 .4rem; font-weight: 800; font-size: .9rem; color: var(--green, #1f5a2a); }
+    .clinicaQuizPreview {
+      margin: 0 0 1rem; padding: 1rem 1.1rem;
+      background: var(--gold-soft, #fbf1d5);
+      border-left: 5px solid var(--gold, #e8a91a);
+      border-radius: 0 12px 12px 0;
+      font-size: .95rem; line-height: 1.55;
+      white-space: pre-wrap; overflow-wrap: anywhere;
+    }
+    .clinicaQuizNote { margin: 0 0 1rem; font-size: .88rem; color: var(--muted, #55624f); }
+    .clinicaQuizResultActions { display: grid; gap: .6rem; }
+    .clinicaQuizResultActions .clinicaQuizBtn { width: 100%; }
+
+    @media (max-width: 520px) {
+      .clinicaQuizOverlay { padding: 0; align-items: flex-end; }
+      .clinicaQuizModal { width: 100%; max-height: 96vh; max-height: 96dvh; border-radius: 18px 18px 0 0; }
+      .clinicaQuizHeader { padding: 1.1rem 3.4rem .9rem 1.1rem; }
+      .clinicaQuizScroll { padding: 1rem 1.1rem .8rem; }
+      .clinicaQuizFooter { padding-left: 1.1rem; padding-right: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <img src="logo.jpeg" alt="Semear com Amor">
+      </a>
+      <nav>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#tratamento">Tratamento</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#estrutura">Estrutura</a>
+        <a href="#familia">Família</a>
+        <a href="#localizacao">Localização</a>
+        <button class="nav-cta" data-clinica-quiz-open>Fale conosco</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="tratamento" class="container hero">
+      <div>
+        <span class="kicker">São Roque/SP · Unidade Masculina · Método Padrão</span>
+        <h1>Clínica de Reabilitação Semear com Amor</h1>
+        
+        <div class="mission">
+          "Nossa missão é oferecer um tratamento humanizado e proporcionar um novo estilo de vida para o paciente."
+        </div>
+        
+        <p class="lede">Acolhemos homens que enfrentam a dependência de álcool e drogas em um ambiente seguro, cercado de natureza e cuidado, onde recomeçar é possível.</p>
+        
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-clinica-quiz-open>Fazer Avaliação Inicial</button>
+          <a href="https://wa.me/5515992726907" class="btn btn-ghost" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
       </div>
-    </header>
+      <div>
+        <img src="foto1.jpg.jpeg" alt="Fachada Semear com Amor" class="foto">
+      </div>
+    </section>
 
-    <main>
-      <section id="inicio" class="hero container">
-        <div class="hero-text">
-          <p class="kicker">São Roque/SP · Unidade Masculina · Método Padrão</p>
-          <h1>Clínica de Reabilitação Semear com Amor</h1>
-          <blockquote class="mission">
-            “Nossa missão é oferecer um tratamento humanizado e proporcionar um novo estilo de vida para o paciente.”
-          </blockquote>
-          <p class="lede">
-            Acolhemos homens que enfrentam a dependência de álcool e drogas em um ambiente seguro, cercado de natureza e cuidado, onde recomeçar é possível.
-          </p>
-          <div class="hero-actions">
-            <a href="#contato" class="btn btn-primary">Peça informações</a>
-            <a href="#tratamento" class="btn btn-ghost">Conheça o tratamento</a>
-          </div>
+    <!-- SOBRE NÓS -->
+    <section id="sobre" class="container split">
+      <div>
+        <img src="foto2.jpg.jpeg" alt="Chafariz da Clínica" class="foto">
+      </div>
+      <div>
+        <h2>Sobre nós</h2>
+        <p>A Semear com Amor é <strong>totalmente legalizada pelos órgãos públicos</strong> e está <strong>há 10 anos no mesmo endereço</strong>. É uma história construída com seriedade, transparência e respeito às famílias que confiam em nós.</p>
+        <p>Nossa abordagem tem base na <strong>espiritualidade, com seguimento bíblico, mas sem vínculo religioso</strong>: cada paciente é respeitado em sua fé e em suas escolhas.</p>
+        
+        <div class="note">
+          <h3>Acomodações humanizadas</h3>
+          <p>Não temos beliches. Todos os quartos são pensados para o conforto, acomodando 3 pacientes com camas baixas.</p>
         </div>
-        <img class="foto" src="foto1.jpeg" alt="Fachada da clínica com chafariz e jardim" />
-      </section>
+      </div>
+    </section>
 
-      <section id="sobre" class="container split">
-        <img class="foto" src="foto2.jpeg" alt="Detalhe do chafariz com água em funcionamento no jardim da clínica" />
-        <div>
-          <h2>Sobre nós</h2>
-          <p>
-            A Semear com Amor é <strong>totalmente legalizada pelos órgãos públicos</strong> e está há <strong>10 anos no mesmo endereço</strong>. É uma história construída com seriedade, transparência e respeito às famílias que confiam em nós.
-          </p>
-          <p>
-            Nossa abordagem tem base na <strong>espiritualidade, com seguimento bíblico, mas sem vínculo religioso</strong>: cada paciente é respeitado em sua fé e em suas escolhas.
-          </p>
-          <div class="note">
-            <h3>Acomodações humanizadas</h3>
-            <p>Não temos beliches. Todos os quartos são pensados para o conforto, acomodando 3 pacientes com camas baixas.</p>
-          </div>
+    <!-- EQUIPE MULTIDISCIPLINAR -->
+    <section id="equipe" class="container">
+      <h2>Nossa equipe multidisciplinar</h2>
+      <p class="section-intro">Profissionais que trabalham juntos pela recuperação física, emocional e social de cada paciente.</p>
+      
+      <div class="team">
+        <div class="member">
+          <h3>Psiquiatra</h3>
+          <p>Avaliação e acompanhamento médico.</p>
         </div>
-      </section>
-
-      <section id="tratamento" class="container">
-        <h2>Nosso tratamento e metodologia</h2>
-        <p class="section-intro">
-          Um programa estruturado, com acompanhamento constante e terapias que cuidam da pessoa por inteiro.
-        </p>
-
-        <div class="tempo">
-          <h3>Tempo de tratamento</h3>
-          <ul class="chips">
-            <li>3 meses</li>
-            <li>6 meses</li>
-            <li>9 meses</li>
-          </ul>
-          <p><strong>Monitoramento 24 horas</strong>, para total segurança do paciente durante toda a internação.</p>
+        <div class="member">
+          <h3>Psicóloga</h3>
+          <p>Atendimento semanal às terças-feiras.</p>
         </div>
-
-        <h3>Terapias e reuniões</h3>
-        <ul class="therapies">
-          <li>Reuniões de 12 Passos</li>
-          <li>Terapia Ocupacional</li>
-          <li>Terapia Comportamental</li>
-          <li>Terapia Emotiva</li>
-          <li>Dinâmicas em grupo</li>
-          <li>Atendimento individual</li>
-          <li>Vídeo terapia</li>
-          <li>Simulado AA e NA</li>
-          <li>Palestras e reuniões</li>
-        </ul>
-        <img class="foto wide" src="palestras.jpeg" alt="Sala de aula usada para palestras e reuniões, com quadro branco e carteiras" />
-      </section>
-
-      <section id="equipe" class="container">
-        <h2>Nossa equipe multidisciplinar</h2>
-        <p class="section-intro">Profissionais que trabalham juntos pela recuperação física, emocional e social de cada paciente.</p>
-        <div class="team">
-          <div class="member"><h3>Psiquiatra</h3><p>Avaliação e acompanhamento médico.</p></div>
-          <div class="member"><h3>Psicóloga</h3><p>Atendimento semanal às terças-feiras.</p></div>
-          <div class="member"><h3>Enfermagem</h3><p>Técnica de enfermagem e enfermeira padrão.</p></div>
-          <div class="member"><h3>Terapeuta especializado</h3><p>Condução das terapias e do programa de recuperação.</p></div>
-          <div class="member"><h3>Nutricionista</h3><p>Acompanhamento 1 vez por semana.</p></div>
-          <div class="member"><h3>Cozinheira</h3><p>5 refeições diárias, no sistema self-service.</p></div>
+        <div class="member">
+          <h3>Enfermagem</h3>
+          <p>Técnica de enfermagem e enfermeira padrão.</p>
         </div>
-      </section>
-
-      <section id="estrutura" class="container">
-        <h2>Ambiente Calmo e Confortável</h2>
-        <p class="section-intro">
-          Quartos confortáveis, salão de jogos, piscina e uma ampla área verde com espaço para atividades ao ar livre.
-        </p>
-        <div class="gallery">
-          <figure>
-            <img class="foto" src="foto3.jpeg" alt="Sala de reuniões e auditório com piano e TV" loading="lazy" />
-            <figcaption>Sala de Reuniões / Auditório</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto4.jpeg" alt="Salão de jogos com pebolim e sinuca" loading="lazy" />
-            <figcaption>Salão de Jogos</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto5.jpeg" alt="Área verde externa com gramado e araucárias" loading="lazy" />
-            <figcaption>Área Verde Externa</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto6.jpeg" alt="Consultório de atendimento com vista para o jardim" loading="lazy" />
-            <figcaption>Consultório / Atendimento</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto7.jpeg" alt="Área coberta de lazer com churrasqueira" loading="lazy" />
-            <figcaption>Área Coberta / Churrasqueira</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto8.jpeg" alt="Acomodação dupla" loading="lazy" />
-            <figcaption>Acomodação Dupla</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto9.jpeg" alt="Quarto com frigobar e TV" loading="lazy" />
-            <figcaption>Quarto com Frigobar e TV</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto10.jpeg" alt="Sala de estar e convivência" loading="lazy" />
-            <figcaption>Sala de Estar e Convivência</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto11.jpeg" alt="Quarto com lareira" loading="lazy" />
-            <figcaption>Quarto com Lareira</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto12.jpeg" alt="Mural na parede: “O Paciente não é só o Paciente. Ele é o Amor de Alguém”" loading="lazy" />
-            <figcaption>Mural Inspiracional</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto13.jpeg" alt="Piscina externa" loading="lazy" />
-            <figcaption>Piscina Externa</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto14.jpeg" alt="Enfermaria e posto de saúde" loading="lazy" />
-            <figcaption>Enfermaria / Posto de Saúde</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto15.jpeg" alt="Cozinha industrial com fogão e exaustor" loading="lazy" />
-            <figcaption>Cozinha Industrial</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto16.jpeg" alt="Lago natural cercado por natureza" loading="lazy" />
-            <figcaption>Lago Natural</figcaption>
-          </figure>
-          <figure>
-            <img class="foto" src="foto17.jpeg" alt="Escritório administrativo e recepção" loading="lazy" />
-            <figcaption>Escritório Administrativo / Recepção</figcaption>
-          </figure>
+        <div class="member">
+          <h3>Terapeuta especializado</h3>
+          <p>Condução das terapias e do programa de recuperação.</p>
         </div>
-      </section>
+        <div class="member">
+          <h3>Nutricionista</h3>
+          <p>Acompanhamento 1 vez por semana.</p>
+        </div>
+        <div class="member">
+          <h3>Cozinheira</h3>
+          <p>5 refeições diárias, no sistema self service.</p>
+        </div>
+      </div>
+    </section>
 
-      <section id="familia" class="container family">
+    <!-- ESTRUTURA (GALERIA) -->
+    <section id="estrutura" class="container">
+      <h2>Ambiente Calmo e Confortável</h2>
+      <p class="section-intro">Quartos confortáveis, salão de jogos, piscina e uma ampla área verde com espaço para atividades ao ar livre.</p>
+      
+      <div class="gallery">
+        <figure><img src="foto6.jpg.jpeg" alt="Consultório" class="foto"><figcaption>Consultório / Atendimento</figcaption></figure>
+        <figure><img src="foto7.jpg.jpeg" alt="Churrasqueira" class="foto"><figcaption>Área Coberta / Churrasqueira</figcaption></figure>
+        <figure><img src="foto11.jpg.jpeg" alt="Acomodação" class="foto"><figcaption>Acomodação Dupla</figcaption></figure>
+        <figure><img src="foto10.jpg.jpeg" alt="Quarto" class="foto"><figcaption>Quarto com Frigobar e TV</figcaption></figure>
+        <figure><img src="foto10.jpg.jpeg" alt="Sala" class="foto"><figcaption>Sala de Estar e Convivência</figcaption></figure>
+        <figure><img src="foto11.jpg.jpeg" alt="Lareira" class="foto"><figcaption>Quarto com Lareira</figcaption></figure>
+        <figure><img src="foto12.jpg.jpeg" alt="Mural" class="foto"><figcaption>Mural Inspiracional</figcaption></figure>
+        <figure><img src="foto13.jpg.jpeg" alt="Piscina" class="foto"><figcaption>Piscina Externa</figcaption></figure>
+        <figure><img src="foto14.jpg.jpeg" alt="Enfermaria" class="foto"><figcaption>Enfermaria / Posto de Saúde</figcaption></figure>
+        <figure><img src="foto15.jpg.jpeg" alt="Cozinha" class="foto"><figcaption>Cozinha Industrial</figcaption></figure>
+        <figure><img src="foto16.jpg.jpeg" alt="Lago" class="foto"><figcaption>Lago Natural</figcaption></figure>
+        <figure><img src="foto17.jpg.jpeg" alt="Escritório" class="foto"><figcaption>Escritório Administrativo / Recepção</figcaption></figure>
+        <figure><img src="foto3.jpg.jpeg" alt="Auditório" class="foto"><figcaption>Auditório / Palestras</figcaption></figure>
+        <figure><img src="foto4.jpg.jpeg" alt="Jogos" class="foto"><figcaption>Salão de Jogos</figcaption></figure>
+        <figure><img src="foto5.jpg.jpeg" alt="Natureza" class="foto"><figcaption>Área Verde e Natureza</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- FAMÍLIA -->
+    <section id="familia" class="container">
+      <div class="family">
         <h2>Informações para a família</h2>
-        <p class="section-intro">Sabemos o quanto o contato importa. Estas são as regras de visita e comunicação.</p>
+        <p class="section-intro">Sabemos o quanto o contato importa. Estas são as regras de visita e comunicação:</p>
+        
         <div class="family-grid">
           <div>
             <h3>Visitas presenciais</h3>
@@ -196,50 +508,348 @@
             <p>Ligações aos sábados, após a primeira visita, com duração de 5 minutos por paciente.</p>
           </div>
         </div>
-      </section>
-
-      <section id="localizacao" class="container location">
-        <div class="location-info">
-          <h2>Onde estamos</h2>
-          <p>
-            Em São Roque/SP, em meio à natureza, longe das influências que atrapalham a recuperação e perto do que ajuda a recomeçar.
-          </p>
-          <address>
-            Estrada do Paraíso - Canguera<br />
-            São Roque - SP<br />
-            CEP 18145-656<br />
-            Plus Code: 9VGJ+QP7 Canguera
-          </address>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=-23.6230970,-47.1182060" target="_blank" rel="noopener">Como chegar</a>
-        </div>
-        <iframe
-          class="map"
-          title="Mapa: Canguera, São Roque - SP"
-          src="https://www.google.com/maps?q=-23.6230970,-47.1182060&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
-      </section>
-
-      <section id="contato" class="container contact">
-        <h2>Você não precisa enfrentar isso sozinho</h2>
-        <p>Fale com a nossa equipe. Explicamos como funciona o tratamento e tiramos todas as dúvidas, sem compromisso.</p>
-        
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/5515992726907">WhatsApp: (15) 99272-6907</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/semearcomamor_" target="_blank" rel="noopener">Instagram: @semearcomamor_</a>
-        </div>
-        <p class="small">Estrada do Paraíso - Canguera, São Roque - SP, 18145-656</p>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>© <span id="year"></span> Clínica de Reabilitação Semear com Amor · São Roque/SP · <a href="https://www.instagram.com/semearcomamor_" target="_blank" rel="noopener">@semearcomamor_</a></p>
       </div>
-    </footer>
+    </section>
 
-    <script src="./script.js"></script>
-  </body>
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao" class="container location">
+      <div>
+        <h2>Onde estamos</h2>
+        <p>Em São Roque/SP, em meio à natureza, longe das influências que atrapalham a recuperação e perto do que ajuda a recomeçar.</p>
+        
+        <address>
+          Próximo a Canguera<br>
+          São Roque - SP<br>
+          <small>Plus Code: 9VGJ+QP7 Canguera</small>
+        </address>
+        
+        <a href="https://maps.google.com/?q=-23.6230970,-47.1182060" target="_blank" rel="noopener" class="btn btn-ghost">Como chegar</a>
+      </div>
+      <div>
+        <!-- MAPA ATUALIZADO COM AS COORDENADAS DO PRINT -->
+        <iframe class="map" src="https://www.google.com/maps?q=-23.6230970,-47.1182060&hl=pt-BR&z=16&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="container contact">
+      <h2>Você não precisa enfrentar isso sozinho</h2>
+      <p class="section-intro">Fale com a nossa equipe. Explicamos como funciona o tratamento e tiramos todas as dúvidas, sem compromisso.</p>
+      
+      <div class="contact-actions">
+        <a href="https://wa.me/5515992726907" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp: (15) 99272-6907</a>
+        <a href="https://instagram.com/semearcomamor_" target="_blank" rel="noopener" class="btn btn-ghost">Instagram: @semearcomamor_</a>
+      </div>
+      
+      <p class="small">Próximo a Canguera, São Roque - SP</p>
+    </section>
+  </main>
+
+  <!-- BOTÃO FLUTUANTE DO QUIZ -->
+  <button class="quiz-float-btn" data-clinica-quiz-open>
+    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm1.07-7.75l-.9.92C11.45 10.9 11 11.5 11 13h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+    <span>Fazer Quiz de Avaliação</span>
+  </button>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Clínica de Reabilitação Semear com Amor · São Roque/SP · <a href="https://instagram.com/semearcomamor_" target="_blank" rel="noopener">@semearcomamor_</a></p>
+  </footer>
+
+  <!-- =========================================
+       3. LÓGICA DO QUIZ E SCRIPT (quiz_2.js)
+       ========================================= -->
+  <script>
+    // Atualiza o ano no rodapé automaticamente
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Script do Quiz
+    (function () {
+      "use strict";
+
+      var NUMERO_WHATSAPP_CLINICA = "5515992726907";
+
+      var QUESTIONS = [
+        { key: "motivo", text: "Qual é o principal motivo que trouxe você até nós?",
+          options: ["Dependência de álcool", "Dependência de outras substâncias", "Álcool e outras substâncias", "Outro motivo", "Prefiro não informar"] },
+        { key: "tempo", text: "Há quanto tempo você enfrenta essa situação?",
+          options: ["Menos de 6 meses", "De 6 meses a 1 ano", "De 1 a 3 anos", "Mais de 3 anos", "Prefiro não informar"] },
+        { key: "tratamento", text: "Você já tentou algum tratamento anteriormente?",
+          options: ["Sim", "Não", "Prefiro não informar"] },
+        { key: "sentimento", text: "Como você se sente em relação a iniciar um tratamento?",
+          options: ["Estou pronto(a) para buscar ajuda", "Estou pensando em buscar ajuda", "Ainda tenho dúvidas", "Prefiro conversar primeiro com a equipe"] },
+        { key: "apoio", text: "Você conta com apoio da família ou de pessoas próximas?",
+          options: ["Sim", "Parcialmente", "Não", "Prefiro não informar"] },
+        { key: "contato", text: "Gostaria que nossa equipe entrasse em contato para conversar sobre sua situação?",
+          options: ["Sim", "Não"] }
+      ];
+      var TOTAL = QUESTIONS.length + 1;
+
+      var answers = {};
+      var current = 0;
+      var lastTrigger = null;
+      var els = {};
+
+      function create(tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text) n.textContent = text;
+        return n;
+      }
+
+      function build() {
+        var overlay = create("div", "clinicaQuizOverlay");
+        overlay.id = "clinicaQuizOverlay";
+
+        var modal = create("div", "clinicaQuizModal clinicaQuizContainer");
+        modal.id = "clinicaQuizModal";
+        modal.setAttribute("role", "dialog");
+        modal.setAttribute("aria-modal", "true");
+        modal.tabIndex = -1;
+
+        var header = create("div", "clinicaQuizHeader");
+        var title = create("h2", "clinicaQuizTitle", "Avaliação Inicial");
+        header.appendChild(title);
+        header.appendChild(create("p", "clinicaQuizSubtitle", "Responda algumas perguntas para nos ajudar a entender melhor como podemos ajudar."));
+        header.appendChild(create("p", "clinicaQuizDisclaimer", "Esta avaliação é apenas uma triagem inicial e não substitui uma avaliação profissional."));
+        var close = create("button", "clinicaQuizClose", "\u00D7");
+        close.type = "button";
+        header.appendChild(close);
+
+        var scroll = create("div", "clinicaQuizScroll");
+        var info = create("div", "clinicaQuizProgressInfo");
+        var counter = create("span", "clinicaQuizCounter");
+        info.appendChild(counter);
+        var progress = create("div", "clinicaQuizProgress");
+        var bar = create("div", "clinicaQuizProgressBar");
+        progress.appendChild(bar);
+        var stage = create("div", "clinicaQuizStage");
+        var error = create("p", "clinicaQuizError");
+        scroll.appendChild(info);
+        scroll.appendChild(progress);
+        scroll.appendChild(stage);
+        scroll.appendChild(error);
+
+        var footer = create("div", "clinicaQuizFooter");
+        var back = create("button", "clinicaQuizBtn clinicaQuizBack", "Voltar");
+        back.type = "button";
+        var next = create("button", "clinicaQuizBtn clinicaQuizNext", "Próximo");
+        next.type = "button";
+        footer.appendChild(back);
+        footer.appendChild(next);
+
+        modal.appendChild(header);
+        modal.appendChild(scroll);
+        modal.appendChild(footer);
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+
+        els = { overlay: overlay, modal: modal, close: close, counter: counter, progress: progress, bar: bar,
+                stage: stage, error: error, footer: footer, back: back, next: next, info: info };
+
+        close.addEventListener("click", closeQuiz);
+        overlay.addEventListener("mousedown", function (e) { if (e.target === overlay) closeQuiz(); });
+        back.addEventListener("click", goBack);
+        next.addEventListener("click", goNext);
+        document.addEventListener("keydown", onKey);
+      }
+
+      function setProgress(step) {
+        var pct = Math.round((step / TOTAL) * 100);
+        els.bar.style.width = pct + "%";
+      }
+
+      function renderStep(direction) {
+        els.error.textContent = "";
+        els.info.style.display = "";
+        els.progress.style.display = "";
+        els.footer.style.display = "";
+        els.counter.textContent = "Pergunta " + (current + 1) + " de " + TOTAL;
+        setProgress(current + 1);
+        els.back.hidden = current === 0;
+        els.next.textContent = current === TOTAL - 1 ? "Finalizar avaliação" : "Próximo";
+        els.next.className = "clinicaQuizBtn " + (current === TOTAL - 1 ? "clinicaQuizFinish" : "clinicaQuizNext");
+
+        els.stage.innerHTML = "";
+        var step = create("div", "clinicaQuizStep" + (direction === "back" ? " clinicaQuizStepBack" : ""));
+        var fs = create("fieldset", "clinicaQuizFieldset");
+
+        if (current < QUESTIONS.length) {
+          var q = QUESTIONS[current];
+          var legend = create("legend", "clinicaQuizQuestion", q.text);
+          fs.appendChild(legend);
+
+          var opts = create("div", "clinicaQuizOptions");
+          q.options.forEach(function (opt, idx) {
+            var label = create("label", "clinicaQuizOption");
+            var input = create("input");
+            input.type = "radio";
+            input.name = "quiz_" + q.key;
+            input.value = opt;
+            if (answers[q.key] === opt) input.checked = true;
+
+            var span = create("span", "clinicaQuizOptionLabel", opt);
+            label.appendChild(input);
+            label.appendChild(span);
+            opts.appendChild(label);
+          });
+          fs.appendChild(opts);
+        } else {
+          var legendLast = create("legend", "clinicaQuizQuestion", "Informações de Contato");
+          fs.appendChild(legendLast);
+
+          var fName = create("label", "clinicaQuizField");
+          fName.appendChild(create("span", "clinicaQuizFieldName", "Seu nome:"));
+          var inName = create("input", "clinicaQuizInput");
+          inName.type = "text";
+          inName.id = "clinicaQuizInputName";
+          inName.value = answers.nome || "";
+          fName.appendChild(inName);
+          fs.appendChild(fName);
+
+          var fCity = create("label", "clinicaQuizField");
+          fCity.appendChild(create("span", "clinicaQuizFieldName", "Cidade / Estado (opcional):"));
+          var inCity = create("input", "clinicaQuizInput");
+          inCity.type = "text";
+          inCity.id = "clinicaQuizInputCity";
+          inCity.value = answers.cidade || "";
+          fCity.appendChild(inCity);
+          fs.appendChild(fCity);
+
+          fs.appendChild(create("p", "clinicaQuizPrivacy", "🔒 Seus dados são confidenciais e serão usados apenas para o atendimento."));
+        }
+
+        step.appendChild(fs);
+        els.stage.appendChild(step);
+      }
+
+      function renderResult() {
+        els.error.textContent = "";
+        els.info.style.display = "none";
+        els.progress.style.display = "none";
+        els.footer.style.display = "none";
+
+        els.stage.innerHTML = "";
+        var step = create("div", "clinicaQuizStep");
+
+        step.appendChild(create("h3", "clinicaQuizResultTitle", "Avaliação concluída!"));
+        step.appendChild(create("p", "clinicaQuizResultText", "Sua mensagem foi formatada. Clique no botão abaixo para enviá-la via WhatsApp para a nossa equipe:"));
+
+        step.appendChild(create("p", "clinicaQuizPreviewLabel", "Resumo da sua avaliação:"));
+
+        var msgText = buildMessage();
+        step.appendChild(create("div", "clinicaQuizPreview", msgText));
+
+        step.appendChild(create("p", "clinicaQuizNote", "Ao clicar, o WhatsApp abrirá com o texto pré-preenchido."));
+
+        var actions = create("div", "clinicaQuizResultActions");
+        var btnWa = create("a", "clinicaQuizBtn clinicaQuizWhatsapp", "Enviar via WhatsApp");
+        btnWa.href = "https://wa.me/" + NUMERO_WHATSAPP_CLINICA + "?text=" + encodeURIComponent(msgText);
+        btnWa.target = "_blank";
+        btnWa.rel = "noopener";
+
+        var btnEdit = create("button", "clinicaQuizBtn clinicaQuizEdit", "Revisar respostas");
+        btnEdit.type = "button";
+        btnEdit.addEventListener("click", function () {
+          current = 0;
+          renderStep("back");
+        });
+
+        actions.appendChild(btnWa);
+        actions.appendChild(btnEdit);
+        step.appendChild(actions);
+
+        els.stage.appendChild(step);
+      }
+
+      function buildMessage() {
+        var txt = "*Avaliação Inicial - Site Semear com Amor*\n\n";
+        if (answers.nome) txt += "*Nome:* " + answers.nome + "\n";
+        if (answers.cidade) txt += "*Cidade:* " + answers.cidade + "\n\n";
+
+        QUESTIONS.forEach(function (q) {
+          if (answers[q.key]) {
+            txt += "*" + q.text + "*\n- " + answers[q.key] + "\n\n";
+          }
+        });
+
+        return txt.trim();
+      }
+
+      function validate() {
+        if (current < QUESTIONS.length) {
+          var q = QUESTIONS[current];
+          var sel = els.stage.querySelector('input[name="quiz_' + q.key + '"]:checked');
+          if (!sel) {
+            els.error.textContent = "Por favor, selecione uma opção para continuar.";
+            return false;
+          }
+          answers[q.key] = sel.value;
+        } else {
+          var inName = document.getElementById("clinicaQuizInputName");
+          var inCity = document.getElementById("clinicaQuizInputCity");
+          if (inName) answers.nome = inName.value.trim();
+          if (inCity) answers.cidade = inCity.value.trim();
+
+          if (!answers.nome) {
+            els.error.textContent = "Por favor, informe seu nome.";
+            return false;
+          }
+        }
+        els.error.textContent = "";
+        return true;
+      }
+
+      function goNext() {
+        if (!validate()) return;
+        if (current < TOTAL - 1) {
+          current++;
+          renderStep("next");
+        } else {
+          renderResult();
+        }
+      }
+
+      function goBack() {
+        if (current > 0) {
+          current--;
+          renderStep("back");
+        }
+      }
+
+      function openQuiz(trigger) {
+        lastTrigger = trigger || document.activeElement;
+        if (!els.overlay) build();
+        current = 0;
+        answers = {};
+        renderStep("next");
+        els.overlay.classList.add("clinicaQuizIsOpen");
+        document.body.style.overflow = "hidden";
+        setTimeout(function () { els.modal.focus(); }, 100);
+      }
+
+      function closeQuiz() {
+        if (!els.overlay) return;
+        els.overlay.classList.remove("clinicaQuizIsOpen");
+        document.body.style.overflow = "";
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+          lastTrigger.focus();
+        }
+      }
+
+      function onKey(e) {
+        if (!els.overlay || !els.overlay.classList.contains("clinicaQuizIsOpen")) return;
+        if (e.key === "Escape") closeQuiz();
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-clinica-quiz-open]");
+        if (btn) {
+          e.preventDefault();
+          openQuiz(btn);
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
